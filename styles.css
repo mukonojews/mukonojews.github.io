@@ -19,14 +19,15 @@ a {
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px 20px;
+    padding: 20px 40px; /* Increased padding for bigger header */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 150px; /* Set height for header */
 }
 
 .logo-container img {
-    width: 50px;
+    width: 120px; /* Increase logo size */
     height: auto;
 }
 
@@ -78,6 +79,11 @@ footer {
     header {
         flex-direction: column;
         text-align: center;
+        height: 200px; /* Increase height for smaller screens */
+    }
+
+    .logo-container img {
+        width: 100px; /* Adjust logo size for smaller screens */
     }
 
     nav ul {
@@ -100,5 +106,40 @@ footer {
 
     h2 {
         font-size: 1.25rem;
+    }
+}
+
+/* Add to existing styles */
+
+/* Social Media Icons in Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    position: relative;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 10px; /* Space between icons */
+}
+
+.social-icon {
+    width: 30px; /* Size of the Facebook icon */
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 15px;
+    }
+
+    .social-icon {
+        width: 25px; /* Adjust icon size for mobile */
     }
 }
