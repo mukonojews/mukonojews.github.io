@@ -1,0 +1,63 @@
+✅ 1. Donations Page Structure (donate.md)
+
+---
+layout: default
+title: Donate
+---
+
+## Support the Mukono Jewish Community
+
+Choose a donation method:
+
+### 💳 PayPal
+<form action="https://www.paypal.com/donate" method="post" target="_blank">
+  <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID" />
+  <input type="submit" value="Donate with PayPal" />
+</form>
+
+### 📱 MTN Mobile Money
+Send to: `+256xxxxxxxx`  
+Name: *Mukono Jews*
+
+### 📱 Airtel Money
+Send to: `+256yyyyyyyy`  
+Name: *Mukono Jews*
+
+Thank you for your support!
+
+✅ 2. Configure PayPal Donation Button
+
+    Go to PayPal Donate Button
+
+    Select "Donate"
+
+    Customize and generate the button
+
+    Use the hosted_button_id in the form above
+
+✅ 3. Jekyll Link Navigation
+
+Add to _data/navigation.yml or manually in your layout/menu:
+
+- title: Donate
+  url: /donate
+
+✅ 4. Optional – Mobile Money QR Codes
+
+    Generate QR codes using https://www.qr-code-generator.com/
+
+    Add them to assets/img/
+
+    Update donate.md:
+
+### MTN Money QR
+![MTN QR](/assets/img/mtn-qr.png)
+
+### Airtel Money QR
+![Airtel QR](/assets/img/airtel-qr.png)
+
+✅ 5. Selling Products
+
+Use PayPal Buy Now or Snipcart (JS-based cart for static sites).
+
+Let me know if you want to set up a products page or Snipcart integration next.

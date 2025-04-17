@@ -1,0 +1,68 @@
+✅ Instructions: Embed YouTube Videos in GitHub Pages (Jekyll + Decap CMS)
+🔧 Step 1: Get the YouTube Video Embed Code
+
+    Go to your video on YouTube
+
+    Click Share → Embed
+
+    Copy the HTML code that looks like:
+
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube video player"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+Replace VIDEO_ID with the actual ID from your video URL.
+📝 Step 2: Add to a Jekyll Page or Post
+Option A: Static page (donate.md, about.md, etc.)
+
+    Edit the file in your repo (or via Decap CMS if configured).
+
+    Paste the embed code inside the Markdown content:
+
+## Watch Our Introduction Video
+
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube video player"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+    ⚠️ Make sure to leave a blank line before and after the iframe.
+
+Option B: Blog post in _posts/
+
+Create or edit a .md post:
+
+---
+title: "New Video"
+date: 2025-04-17
+layout: post
+---
+
+Watch the latest update:
+
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  title="YouTube video player"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+📦 Step 3 (Optional): Allow HTML in Markdown
+
+If your site disables raw HTML, check _config.yml:
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+Make sure input: GFM is set to allow HTML blocks.
+✅ Done
+
+Once you commit or save, the video will show up directly on your page.
+
+Let me know if you want to show video thumbnails or link to playlists.

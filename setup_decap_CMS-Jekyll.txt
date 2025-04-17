@@ -1,0 +1,142 @@
+✅ Setup Instructions: Decap CMS + Jekyll on GitHub Pages (mukonojews.github.io)
+
+This will allow non-developers to manage content via a simple browser interface at mukonojews.org/admin.
+🔧 1. Setup Your GitHub Pages Repo
+
+If not already:
+
+    Create mukonojews.github.io repo under your GitHub org/account.
+
+    Enable GitHub Pages via Settings → Pages → Source: main branch /root`.
+
+📁 2. Basic Jekyll Structure
+
+Ensure your repo has this structure:
+
+mukonojews.github.io/
+├── _config.yml
+├── index.md
+├── _posts/
+│   └── 2024-01-01-welcome.md
+├── admin/
+│   └── config.yml         <-- Decap CMS config
+├── assets/
+├── _layouts/
+│   └── default.html
+└── Gemfile
+
+✏️ 3. Jekyll _config.yml
+
+title: Mukono Jews
+description: Mukono Orthodox Jewish Community
+baseurl: "" # for root
+url: "https://mukonojews.org" # your custom domain
+
+plugins:
+  - jekyll-feed
+
+✍️ 4. Create admin/config.yml for Decap CMS
+
+backend:
+  name: github
+  repo: mukonojews/mukonojews.github.io
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "index"
+        file: "index.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "posts"
+    label: "Blog"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+🌐 5. Create admin/index.html for Decap CMS UI
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Content Manager</title>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
+
+🔐 6. Enable GitHub OAuth App
+
+To allow login to Decap CMS:
+
+    Go to: https://github.com/settings/developers → OAuth Apps → New OAuth App
+
+    Set:
+
+        App name: MukonoJews CMS
+
+        Homepage URL: https://mukonojews.org
+
+        Authorization callback URL: https://mukonojews.org/admin/
+
+    Save and copy Client ID and Client Secret
+
+Then, add this to admin/config.yml under backend::
+
+auth:
+  client_id: YOUR_CLIENT_ID
+  client_secret: YOUR_CLIENT_SECRET
+
+📝 7. Add index.md and _posts
+
+Example index.md:
+
+---
+layout: default
+title: Home
+---
+
+Welcome to the Mukono Jewish Community!
+
+Example _posts/2024-01-01-welcome.md:
+
+---
+title: Welcome
+date: 2024-01-01
+---
+
+First blog post.
+
+🌐 8. Access CMS
+
+Once deployed:
+
+    Visit https://mukonojews.org/admin
+
+    GitHub login will appear
+
+    Edit pages/posts visually
+
+    Commits go to repo → GitHub Pages builds → site updates
+
+✅ Optional Enhancements
+
+    Add jekyll-seo-tag plugin
+
+    Use Netlify Identity instead of GitHub OAuth (if hosting on Netlify)
+
+Let me know when you’re ready to verify the OAuth callback or if you need an alternate auth method like Netlify Identity.
